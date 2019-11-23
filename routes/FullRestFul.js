@@ -10,7 +10,7 @@ router.post('/',canalController.createOneLocal);
 
 //get user info
 router.get('/:id',getCanal,(req,res) => {
-  res.send(res.user.username)
+  res.send(res.canal)
 });
 
 //Updating user
