@@ -22,7 +22,7 @@ module.exports.getOne = async (req, res) =>{
       }
           
       else
-          return res.status(400).json(null)
+          return res.render('one', {message:'Canal no encontrado.'})
       })
   
 }
@@ -44,12 +44,11 @@ module.exports.createOne = async (req, res) => {
 }
 
 module.exports.deleteOne = async (req, res) => {
-  console.log('entre',req.body.nombre)
   Canal.findOneAndDelete({nombre: req.body.nombre})
     .then((data) =>{
         if (data) res.render('delete',{message:'El canal se elimino con exito'});
 
-        else res.status(404).send();
+        else res.render('delete',{message:'El canal no pudo ser encontrado.'});
     }).catch( err => {
         next(err);
     })
@@ -103,7 +102,7 @@ module.exports.createOneLocal = async (req, res) => {
 module.exports.deleteOneLocal = async (req, res) => {
   try {
     await Canal.findOneAndDelete({_id: req.params.id})
-    res.json({message: 'Usuario borrado'})
+    res.json({message: 'Canal borrado'})
   }
   catch (err){
     res.status(500).json({message: err.message})
