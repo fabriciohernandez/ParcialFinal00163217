@@ -1,9 +1,12 @@
 var Canal = require('../models/canal');
+var express = require('express');
 
 module.exports.getAll = async (req, res) => {
   try {
     const canales = await Canal.find()
-    res.json(canales)
+    //res.json(canales)
+    console.log((canales))
+    res.render('all',{arreglo:canales})
   }
   catch (err){
     res.status(500).json({message: err.message})
@@ -15,13 +18,15 @@ module.exports.getOne = async (req, res) =>{
 }
 
 module.exports.createOne = async (req, res) => {
+  console.log(req.body)
   const canal = new Canal({
     nombre: req.body.nombre,
     propietario: req.body.propietario
   })
   try {
     const newCanal = await canal.save()
-    res.status(201).json(newCanal)
+    //res.status(201).json(newCanal)
+    res.render('index',{message: 'Canal creado con Exito'})
   }
   catch (err){
     res.status(400).json({message: err.message})

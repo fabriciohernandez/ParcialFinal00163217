@@ -1,0 +1,41 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  script(src='https://kit.fontawesome.com/37fb1f97f1.js' crossorigin='anonymous')
+  style
+    include Resources/bootstrap.css
+  title Canales
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  a.navbar-brand(href='#') Youtube
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarColor01' aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarColor01.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link()
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='canal/all') Ver Canales
+      li.nav-item
+        a.nav-link(href='canal/search') Buscar Canal
+.container
+  br
+  .jumbotron
+    h1
+      | Registrar un Nuevo Canal
+    form(method='post')
+      .form-group
+        label.col-sm-4.col-form-label(for='nombre') Ingrese el Nombre del canal: 
+        br
+        input.form-control(type='text' name='nombre' required)
+      .form-group
+        label.col-sm-4.col-form-label(for='propietario') Ingrese su Nombre Completo: 
+        input.form-control(type='text' name='propietario' required)
+      .form-group
+        button.btn.btn-primary Crear Canal       
+  hr
+
+  h1 #{message}

@@ -5,7 +5,11 @@ var Canal = require('../models/canal');
 /* GET users listing. */
 
 //GET all
-router.get('/', canalController.getAll);
+router.get('/', (req,res) =>{
+  res.render('index');
+});
+
+router.get('/all', canalController.getAll)
 
 //REGISTRAR NUEVO CANAL
 router.post('/',canalController.createOne);

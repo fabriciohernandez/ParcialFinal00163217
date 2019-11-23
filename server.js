@@ -1,6 +1,8 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 const express = require('express')
+const cookieParser = require('cookie-parser');
+
 const app = express()
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true , useUnifiedTopology: true })
@@ -9,13 +11,20 @@ db.on('error',(error)=> console.log(error))
 db.once('open',()=> console.log('Successful connected to database'))
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 
 //Define views engine
 app.set('views', './views');
 app.set('view engine', 'pug');
 
+//res.render('index');
+
 const userRouter = require('./routes/canal')
 app.use('/canal',userRouter)
+
+
 
 const port = process.env.PORT
 app.listen(port, () => console.log('Server Started on port:',port))
