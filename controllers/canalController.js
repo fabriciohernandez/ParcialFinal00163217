@@ -57,12 +57,10 @@ module.exports.deleteOne = async (req, res) => {
 
 module.exports.update = async (req, res) =>{
   let update = {
-    nombre: req.body.newNombre,
-    propietario: req.body.propietario,
-    subscriptores: req.body.subscriptores
+    ...req.body
   }
   Canal.findOneAndUpdate({
-        username: req.body.nombre
+        nombre: req.body.nombre
     }, update, {
         new: true
     })
