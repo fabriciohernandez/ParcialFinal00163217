@@ -40,10 +40,14 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
           th(scope='col') Subscriptores
           th(scope='col') Fecha de Creacion
       tbody#table_body  
-        - console.log({cant}.cant)
+        - console.log({arreglo}.arreglo[0].nombre)
         - for (var x = 0; x < {cant}.cant; x++)
-          tr           
-            td = {arreglo}.arreglo[x].nombre
+          tr     
+            td
+            td #{{arreglo}.arreglo[x].nombre}
+            td #{{arreglo}.arreglo[x].propietario}
+            td #{{arreglo}.arreglo[x].subscriptores}
+            td #{{arreglo}.arreglo[x].createdAt}
             
          
 
