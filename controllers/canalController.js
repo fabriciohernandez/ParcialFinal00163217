@@ -74,3 +74,57 @@ module.exports.update = async (req, res) =>{
     });
 }
 
+
+
+module.exports.getAllLocal = async (req, res) => {
+  try {
+    const canal = await Canal.find()
+    res.json(canal)
+  }
+  catch (err){
+    res.status(500).json({message: err.message})
+  }
+}
+
+module.exports.createOneLocal = async (req, res) => {
+  const canal = new Canal({
+    nombre: req.body.nombre,
+    propietario: req.body.propietario
+  })
+  try {
+    const newCanal = await canal.save()
+    res.status(201).json(newCanal)
+  }
+  catch (err){
+    res.status(400).json({message: err.message})
+  }
+}
+
+module.exports.deleteOneLocal = async (req, res) => {
+  try {
+    await Canal.findOneAndDelete({_id: req.params.id})
+    res.json({message: 'Usuario borrado'})
+  }
+  catch (err){
+    res.status(500).json({message: err.message})
+  }
+}
+
+module.exports.updateLocal = async (req, res) =>{
+  if (req.body.nombre!=null) {
+    res.canal.nombre = req.body.nombre
+  }
+  if (req.body.propietario!=null) {
+    res.canal.propietario = req.body.propietario
+  }
+  if (req.body.subscriptores!=null) {
+    res.canal.subscriptores = req.body.subscriptores
+  }
+
+  try {
+    const updatedCanal = await res.canal.save()
+    res.json(updatedCanal)
+  } catch (e) {
+    res.status(400).json({message: e.message})
+  }
+}
