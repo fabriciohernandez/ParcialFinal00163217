@@ -1,9 +1,10 @@
-require('dotenv').config()
+
 const mongoose = require('mongoose')
 const express = require('express')
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 var logger = require('morgan');
+require('dotenv').config()
 
 const app = express()
 
