@@ -1,6 +1,8 @@
 var Canal = require('../models/canal');
 var express = require('express');
 
+//CLOUD
+
 module.exports.getAll = async (req, res) => {
   try {
     const canales = await Canal.find()
@@ -73,7 +75,7 @@ module.exports.update = async (req, res) =>{
     });
 }
 
-
+//LOCAL
 
 module.exports.getAllLocal = async (req, res) => {
   try {
