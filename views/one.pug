@@ -13,14 +13,14 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
     span.navbar-toggler-icon
   #navbarColor01.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
-        a.nav-link()
+      li.nav-item
+        a.nav-link(href='/canal')
           | Home 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='canal/all') Ver Canales
-      li.nav-item
-        a.nav-link(href='canal/search') Buscar Canal
+        a.nav-link(href='/canal/all') Ver Canales
+      li.nav-item.active
+        a.nav-link() Buscar Canal
       li.nav-item
         a.nav-link(href='/canal/delete') Eliminar Canal
       li.nav-item
@@ -29,17 +29,19 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
   br
   .jumbotron
     h1
-      | Registrar un Nuevo Canal
+      | Buscar Canal
     form(method='post')
       .form-group
         label.col-sm-4.col-form-label(for='nombre') Ingrese el Nombre del canal: 
         br
         input.form-control(type='text' name='nombre' required)
       .form-group
-        label.col-sm-4.col-form-label(for='propietario') Ingrese su Nombre Completo: 
-        input.form-control(type='text' name='propietario' required)
-      .form-group
-        button.btn.btn-primary Crear Canal       
+        button.btn.btn-primary Buscar       
   hr
-
-  h1 #{message}
+  h5 Nombre del canal: #{nombre}
+  hr
+  h5 Propietario: #{propietario}
+  hr
+  h5 Subs: #{subscriptores}
+  hr
+  h5 Fecha de Creacion: #{creacion}

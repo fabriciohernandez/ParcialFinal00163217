@@ -2,6 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const express = require('express')
 const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 
 const app = express()
 
@@ -13,7 +14,7 @@ db.once('open',()=> console.log('Successful connected to database'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(methodOverride('_method'));
 
 //Define views engine
 app.set('views', './views');

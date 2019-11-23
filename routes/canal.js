@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var canalController = require('../controllers/canalController')
 var Canal = require('../models/canal');
+
 /* GET users listing. */
 
 //GET all
@@ -15,14 +16,21 @@ router.get('/all', canalController.getAll)
 router.post('/',canalController.createOne);
 
 //OBTENER LA INFORMACION DE UN CANAL
-router.get('/:id',getCanal,canalController.getOne);
+router.post('/search',canalController.getOne);
+router.get('/search', (req,res) =>{
+  res.render('one');
+});
 
 //ACTUALIZANDO CANAL
-router.patch('/:id',getCanal, canalController.update);
-
+router.post('/update', canalController.update);
+router.get('/update', (req,res) =>{
+  res.render('update');
+});
 //BORRANDO CANAL
-router.delete('/:id',getCanal, canalController.deleteOne);
-
+router.post('/delete', canalController.deleteOne);
+router.get('/delete', (req,res) =>{
+  res.render('delete');
+});
 
 //middleware function VERIFICA SI EL CANAL EXISTE 
 async function getCanal(req, res, next){

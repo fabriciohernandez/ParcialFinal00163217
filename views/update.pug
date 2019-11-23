@@ -1,0 +1,54 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  script(src='https://kit.fontawesome.com/37fb1f97f1.js' crossorigin='anonymous')
+  style
+    include Resources/bootstrap.css
+  title Canales
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  a.navbar-brand(href='#') Youtube
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarColor01' aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarColor01.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+        li.nav-item
+            a.nav-link(href='/canal')
+                | Home 
+            span.sr-only (current)
+        li.nav-item
+            a.nav-link(href='/canal/all') Ver Canales
+        li.nav-item
+            a.nav-link() Buscar Canal
+        li.nav-item
+            a.nav-link(href='/canal/delete') Eliminar Canal
+        li.nav-item.active
+            a.nav-link() Actualizar Canal
+.container
+  br
+  .jumbotron
+    h1
+      | Actualizar Canal  
+    form(action='/canal/update' method='post')
+        .form-group
+            label.col-sm-8.col-form-label(for='nombre') Nombre del canal a actualizar
+            br
+            input.form-control(type='text' name='nombre' required)
+        .form-group
+            label.col-sm-8.col-form-label(for='newNombre') Nuevo Nombre
+            br
+            input.form-control(type='text' name='newNombre')
+        .form-group
+            label.col-sm-8.col-form-label(for='propietario') Nuevo Propietario
+            br
+            input.form-control(type='text' name='propietario')
+        .form-group
+            label.col-sm-8.col-form-label(for='subscriptores') Nueva Cant Subs
+            br
+            input.form-control(type='number' name='subscriptores')
+        .form-group
+            button.btn.btn-primary Actualizar   
+  hr
+
+  h5 #{message}

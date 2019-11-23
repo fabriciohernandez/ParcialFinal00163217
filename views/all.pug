@@ -20,7 +20,11 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
           | Ver Canales 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='canal/search') Buscar Canal
+        a.nav-link(href='/canal/search') Buscar Canal
+      li.nav-item
+        a.nav-link(href='/canal/delete') Eliminar Canal
+      li.nav-item
+        a.nav-link(href='/canal/update') Actualizar Canal
 .container
   br
   .jumbotron
@@ -36,8 +40,15 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
           th(scope='col') Propietario
           th(scope='col') Subscriptores
           th(scope='col') Fecha de Creacion
-      tbody
-        script
-          console.log(#{arreglo})
+      tbody#table_body  
+        - console.log({cant}.cant)
+        - for (var x = 0; x < {cant}.cant; x++)
+          tr           
+            td = {arreglo}.arreglo[x].nombre
+            
+         
+
+        
+          
         
   
