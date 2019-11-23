@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
+var logger = require('morgan');
 
 const app = express()
 
@@ -11,6 +12,7 @@ const db = mongoose.connection
 db.on('error',(error)=> console.log(error))
 db.once('open',()=> console.log('Successful connected to database'))
 
+app.use(logger('dev'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
