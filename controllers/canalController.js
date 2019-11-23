@@ -67,9 +67,9 @@ module.exports.update = async (req, res) =>{
     })
     .then((updated) => {
         if (updated)
-            return res.status(200).json(updated);
+            return res.render('update',{message: 'Canal actualizado con exito'});
         else
-            return res.status(400).json(null);
+            return res.render('update',{message: 'Canal no encontrado'});
     }).catch(err => {
         next(err);
     });
