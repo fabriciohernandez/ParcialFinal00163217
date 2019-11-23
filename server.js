@@ -14,8 +14,8 @@ app.use(express.json())
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-const userRouter = require('./routes/user')
-app.use('/user',userRouter)
+const userRouter = require('./routes/canal')
+app.use('/canal',userRouter)
 
 const port = process.env.PORT
 app.listen(port, () => console.log('Server Started on port:',port))
